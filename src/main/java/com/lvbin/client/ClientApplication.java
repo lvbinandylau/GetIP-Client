@@ -26,9 +26,9 @@ public class ClientApplication {
         void contributors(@Param("text") String text);
     }
 
-    @Scheduled(cron = "0/5 * * * * ?")  //cron接受cron表达式，根据cron表达式确定定时规则
+    @Scheduled(cron = "0/5 * * * * *")  //cron接受cron表达式，根据cron表达式确定定时规则
     void ConnectToServer() {
-        MyServer myServerPost = Feign.builder().decoder(new GsonDecoder()).encoder(new GsonEncoder()).target(MyServer.class, "http://localhost:12345");
+        MyServer myServerPost = Feign.builder().decoder(new GsonDecoder()).encoder(new GsonEncoder()).target(MyServer.class, "http://47.98.216.143:12345");
         myServerPost.contributors("woshinidaye");
         /*
         MyServer myServer = Feign.builder().target(MyServer.class, "http://47.98.216.143:12345");
